@@ -120,13 +120,9 @@ INSTALLED_APPS = (
     'south',
     'sorl.thumbnail',
     'hvad',
-    'mptt',
-    'pytils',
-    'rosetta',
     'pages',
     'gallery',
     'room',
-    'debug_toolbar',
 )
 
 LANGUAGES = [

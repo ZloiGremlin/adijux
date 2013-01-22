@@ -11,7 +11,6 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^switch-language/', SwitchLanguage.as_view(), name='switch-language'),
-    url(r'^rosetta/', include('rosetta.urls')),
     url(r'^rooms/$', RoomsView.as_view(), name='rooms'),
     url(r'^(?P<slug>[0-9A-Za-z-_.//]+)/$', PageView.as_view(slug_field='url'), name='page'),
     url(r'^$', FrontView.as_view(), name='front'),
