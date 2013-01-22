@@ -1,15 +1,7 @@
 # vim:fileencoding=utf-8
 from django.db import models
 from hvad.models import TranslatableModel, TranslatedFields
-from mptt.fields import TreeForeignKey
 from django.db.models import permalink
-from mptt.models import MPTTModel
-import os
-import uuid
-from adijux import settings
-from sorl.thumbnail.fields import ImageField
-from sorl.thumbnail.shortcuts import get_thumbnail
-from django.utils import translation
 
 class Page(TranslatableModel):
     class Meta(object):

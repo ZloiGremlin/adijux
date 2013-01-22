@@ -6,8 +6,6 @@ import os
 import uuid
 from adijux import settings
 from sorl.thumbnail.fields import ImageField
-from sorl.thumbnail.shortcuts import get_thumbnail
-from django.utils import translation
 
 
 def get_file_path(instance, filename):
