@@ -12,7 +12,7 @@
                     <h1>{{ object.name|safe }}</h1>
                     <ul class="cont_menu ofl">
                         {% for item in menu %}
-                            <li {% if forloop.first %}class="active"{% endif %}><a href="/{{ item.url }}">{{ item.name }}</a></li>
+                            <li {% if forloop.first %}class="active"{% endif %}><a href="{{ item.url }}">{{ item.name }}</a></li>
                         {% endfor %}
                     </ul>
                 </div>
