@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block description %}{{ object.meta_description }}{% endblock %}
+{% block keywords %}{{ object.meta_keywords }}{% endblock %}
+
+{% block content %}
+    <div class="right content">
+        <h1>
+            {{ object.name }}
+        </h1>
+
+
+        <div class="scroll">
+            <div class="inner">
+                {{ object.text|safe }}
+
+
+            </div>
+        </div>
+
+
+    </div>
+{% endblock %}

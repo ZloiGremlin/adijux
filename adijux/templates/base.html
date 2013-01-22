@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{{ object.title }}{% endblock %}</title>
+    <meta http-equiv="keywords" content="{% block keywords %}{% endblock %}"/>
+    <meta name="description" content="{% block description %}{% endblock %}"/>
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic&subset=latin,cyrillic'
+          rel='stylesheet' type='text/css'>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <link type="text/css" rel="stylesheet" media="all" href="{{ STATIC_URL }}css/reset.css"/>
+    <link type="text/css" rel="stylesheet" media="all" href="{{ STATIC_URL }}css/font.css"/>
+    <link type="text/css" rel="stylesheet" media="all" href="{{ STATIC_URL }}css/jquery.jscrollpane.css"/>
+    <link type="text/css" rel="stylesheet" media="all" href="{{ STATIC_URL }}css/style.css"/>
+    <link type="text/css" rel="stylesheet" media="all" href="{{ STATIC_URL }}css/responsive.css"/>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.mousewheel.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.jscrollpane.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/main.js"></script>
+</head>
+<body>
+<div id="container">
+    <div id="uzor">
+
+    {% block gallery %}{% endblock %}
+
+
+        <div id="top">
+            <div class="uzor lfl"></div>
+
+
+            {% include "menu/topmenu.html" %}
+
+
+
+            <div class="languages rfl">
+                <span class="lfl">Язык:</span>
+                <ul>
+                    <li class="active">
+                        <a href="#"><img src="{{ STATIC_URL }}images/rus_flag.jpg" width="19" height="13"
+                                         alt=""><em>Ru</em></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="{{ STATIC_URL }}images/en_flag.jpg" width="19" height="13" alt="">
+                            <em>En</em></a>
+                    </li>
+                    <li class="last">
+                        <a href="#"><img src="{{ STATIC_URL }}images/ar_flag.jpg" width="19" height="13"
+                                         alt=""><em>Ar</em></a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="center {% block superclass %}{% endblock %}">
+        {% block left %}
+            <div class="left lfl">
+                <div class="logo">
+                    <a href="/"><img src="{{ STATIC_URL }}images/logo.png" width="278" height="118" alt=""></a>
+                </div>
+
+                {{ blocks.bron|safe }}
+
+            </div>
+        {% endblock %}
+            {% block content %}
+
+            {% endblock %}
+            <div class="clr"></div>
+        </div>
+
+        <div class="footer">
+            <div class="left lfl">
+
+                {{ blocks.partners|safe }}
+
+
+            </div>
+            <div class="right rfl">
+               {% include "menu/botmenu.html" %}
+                {% block arrows %}{% endblock %}
+
+
+            </div>
+            <div class="clr"></div>
+        </div>
+        <div class="clr"></div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

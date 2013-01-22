@@ -1,0 +1,11 @@
+<div class="menu_bot lfl">
+    <ul>
+        {% for item in bottommenu %}
+
+            <li><a href="/{{ item.url }}">{{ item.name }}</a></li>
+            {% if not forloop.last %}
+                <li>/</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>

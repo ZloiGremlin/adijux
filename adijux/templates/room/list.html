@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Номера{% endblock %}
+
+{% block left %}
+
+    <div class="left lfl">
+        <div class="logo">
+            <a href="/"><img src="{{ STATIC_URL }}images/logo.png" width="278" height="118" alt=""></a>
+        </div>
+
+        <div class="block_menu">
+            <h1>Наши номера</h1>
+            <ul>
+                {% for room in rooms %}
+                    <li><a href="#">{{ room.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        {{ blocks.bron|safe }}
+
+        <script type="text/javascript">
+            $(function(){
+                $('#uzor').css('min-height', $('.left').height() + 75 + 73 + 67 + 30 )
+            });
+
+        </script>
+
+    </div>
+
+{% endblock %}
+
+{% block superclass %}numbers{% endblock %}
+
+{% block content %}
+    <div class="right content">
+        <div class="scroll">
+            <div class="inner">
+                {% for room in rooms %}
+                    <div class="nomer lfl">
+                        <a href="#">
+                            <img src="{{ room.get_image.url }}" width="100%" alt="{{ room.name }}">
+
+                            <div class="bot">
+                                <a class="type lfl" href="#">{{ room.name }}</a>
+
+                                <div class="all_discription rfl"><a href="#">полное описание</a></div>
+                            </div>
+                        </a>
+                    </div>
+                    {% if forloop.counter|divisibleby:2 or forloop.last %}
+                        <div class="clr"></div>
+                    {% endif %}
+                {% endfor %}
+                &nbsp;
+            </div>
+        </div>
+    </div>
+{% endblock %}

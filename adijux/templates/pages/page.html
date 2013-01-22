@@ -1,0 +1,27 @@
+{% load i18n %}
+<div class="container ofl">
+    <div class="left lfl">
+        {% include "news/left-news.html" %}
+    </div>
+    <div class="right lfl">
+        {% if page.search or page.sidebar %}
+            <div class="right_sidebar rfl">
+                {% if page.search %}
+                    <form action="{% url search %}" method="get">
+                        <div class="search ofl">
+                            <input type="text" name="q" placeholder="{% trans "Search..." %}">
+                            <input type="submit" value="">
+                        </div>
+                    </form>
+                {% endif %}
+
+                {{ page.sidebar|safe }}
+
+            </div>
+        {% endif %}
+
+        <h1>{{ page.name }}</h1>
+
+        {{ page.text|safe }}
+    </div>
+</div>

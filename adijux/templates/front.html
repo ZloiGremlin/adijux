@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+
+
+{% block content %}
+    <div class="right rfl">
+        <div class="top">
+
+            <div class="bottom">
+                <div class="head">
+                    <div class="turn">Свернуть описание</div>
+                    <h1>{{ object.name|safe }}</h1>
+                    <ul class="cont_menu ofl">
+                        {% for item in menu %}
+                            <li {% if forloop.first %}class="active"{% endif %}><a href="/{{ item.url }}">{{ item.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="scroll">
+                    <div class="inner">
+                        {{ object.text|safe }}
+                    </div>
+                </div>
+                <a class="bron" href="#">Забронировать номер</a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+{% endblock %}
+
+
+{% block gallery %}
+
+    <div class="photo"><img src="" alt=""></div>
+
+    <div class="thumbnails" style="display: none;">
+        <ul>
+            {% for item in gallery %}
+                <li {% if forloop.first %}class="active"{% endif %}  rel="{{ forloop.counter0 }}">
+                    <a href="#">
+                        <div class="name">{{ item.name|safe }}</div>
+                        <div class="img">
+                            {% thumbnail item.image "84x54" upscale=true crop='center' as img %}
+                                <img src="{{ img.url }}" alt="{{ item.name }}" width="{{ img.width }}" height="{{ img.height }}">
+                            {% endthumbnail %}
+                        </div>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="squares" style="display: none;"></div>
+
+
+    <div id="bgs" style="display:none;">
+        {% for item in gallery %}
+            <img src="{{ item.image.url }}" alt="">
+        {% endfor %}
+    </div>
+
+{% endblock %}
+
+{% block left %}
+    <div class="left lfl">
+    <div class="logo" style="top:-400px;">
+        <a href="/"><img src="{{ STATIC_URL }}images/logo.png" width="278" height="118" alt=""></a>
+    </div>
+
+    <div class="preloader">
+        <img src="{{ STATIC_URL }}images/logo_loader.png" width="274" height="112" alt="">
+
+        <div class="loading"></div>
+    </div>
+    </div>
+{% endblock %}
+
+{% block arrows %}
+    <div class="gallery_nav lfl">
+        <a href="#" id="arr-prev"><img src="{{ STATIC_URL }}images/prev_arr.png" width="117" height="28" alt=""></a>
+        <a href="#" id="arr-next"><img src="{{ STATIC_URL }}images/next_arr.png" width="110" height="28" alt=""></a>
+    </div>
+{% endblock %}
