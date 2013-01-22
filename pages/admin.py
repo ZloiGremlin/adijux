@@ -2,7 +2,6 @@
 
 from django.contrib import admin
 from hvad.admin import TranslatableAdmin
-from mptt.admin import MPTTModelAdmin
 from models import Page, Block, Menu
 
 class PageAdmin(TranslatableAdmin):
