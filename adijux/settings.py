@@ -138,6 +138,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.static',
     'pages.context_processors.block',
     'pages.context_processors.top_menu',
+    'pages.context_processors.subroom',
     )
 
 INTERNAL_IPS = ('127.0.0.1',)

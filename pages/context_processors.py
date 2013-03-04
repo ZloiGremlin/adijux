@@ -1,4 +1,5 @@
 from models import Block, Menu
+from room.models import Room
 
 def block(request):
     l = request.session.get('lang','ru')
@@ -15,3 +16,6 @@ def top_menu(request):
     botmenu = all.filter(position='bottom', parent=None)
     return {'topmenu': menu, 'bottommenu': botmenu}
 
+def subroom(request):
+    all = Room.objects.all()
+    return {'subroom': all}

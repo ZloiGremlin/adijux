@@ -34,7 +34,7 @@ a:hover {
     background: url("../images/menu_bg.jpg") repeat-x;
     height: 73px;
     box-shadow: 0 10px 20px #010904;
-    z-index: 101;
+    z-index: 111;
     position: relative;
 }
 
@@ -91,7 +91,7 @@ a:hover {
     overflow: hidden;
     display: none;
     left: 0;
-    z-index: 100;
+    z-index: 10000;
 
 }
 
@@ -303,8 +303,12 @@ h1 span {
     padding-bottom: 20px;
 }
 
-.jspTrack {
+.right .jspTrack {
     background: #313733;
+}
+
+.jspTrack {
+
     width: 2px;
 }
 
@@ -328,6 +332,7 @@ h1 span {
     bottom: 30px;
     width: 100%;
     min-width: 1260px;
+    z-index: 1000;
 
 }
 
@@ -688,5 +693,12 @@ h1 span {
 }
 
 
+.logotip {
+    margin: 0 auto;
+    width: 217px;
+    display: block;
+}
 
-
+.center.number {
+    height: auto !important;
+}

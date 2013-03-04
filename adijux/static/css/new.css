@@ -1,0 +1,428 @@
+.center.number .right {
+    width: 50%;
+    text-align: center;
+    overflow: hidden;
+    background: url("../images/bedroom.jpg") no-repeat center center;
+    height: 736px;
+    margin-right: 0;
+    margin-left: -5px;
+
+}
+
+.center.number {
+    padding-top: 0;
+    background: url("../images/wood_texture_bg.jpg");
+    width: 100%;
+    height: 100%;
+}
+
+.center.number .left {
+    height: 736px;
+    width: 50%;
+    border-right: 5px solid rgba(50, 26, 9, 0.9);
+    position: relative;
+    z-index: 110;
+
+}
+
+.top_abs {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    z-index: 1;
+    width: 95%;
+
+}
+
+.select {
+    background: #4f210e;
+    border-top: 1px solid #24180d;
+    width: 256px;
+    height: 36px;
+    border-bottom: 1px solid #813a17;
+    border-radius: 18px;
+    font-family: 'helios_thin', sans-serif;
+    font-size: 24px;
+    box-shadow: 0 0 1px #000;
+    margin-left: 15px;
+    position: relative;
+    top: 40px;
+    z-index: 100;
+
+}
+
+.select em {
+    display: block;
+    position: absolute;
+    left: 20px;
+    top: -24px;
+    font-family: 'helios_light', sans-serif;
+    color: #b08c6f;
+    font-size: 16px;
+    text-shadow: 1px 1px 1px #333;
+    font-style: normal;
+
+}
+
+.select span {
+    display: block;
+    background: url("../images/select_arr.png") no-repeat right;
+    cursor: pointer;
+    margin-right: 15px;
+    height: 30px;
+    padding-top: 6px;
+    padding-left: 20px;
+    position: relative;
+    z-index: 130;
+
+}
+
+.select ul {
+    position: absolute;
+    top: 19px;
+    z-index: 0;
+    background: #4f210e;
+    border: 1px solid #813a17;
+    border-top: 0;
+    width: 100%;
+    padding-top: 20px;
+    border-radius: 0 0 18px 18px;
+    box-shadow: 0 1px 1px #000;
+    display: none;
+}
+
+.select ul li {
+    margin-bottom: 15px;
+    padding-left: 20px;
+}
+
+.all_numbers {
+    font-family: "helios_light", sans-serif;
+    font-size: 18px;
+    background: url("../images/white_arr_left.png") no-repeat left;
+    padding-left: 28px;
+    margin-right: 10px;
+    margin-top: 55px;
+
+}
+
+.left .text {
+    padding: 110px 30px 30px;
+}
+
+.left .text h2, .left .text h3 {
+    background: url("../images/h_bg.png") repeat-y right;
+    padding: 10px 10px 10px;
+    margin-bottom: 25px;
+
+}
+
+.left .text h2 {
+    font-size: 30px;
+    font-family: 'helios_thin', sans-serif;
+
+}
+
+.left .text h3 {
+    font-size: 25px;
+    padding: 12px 10px 0;
+    height: 37px;
+    font-family: 'helios_light', sans-serif;
+
+}
+
+.left .text p {
+    font-size: 18px;
+    line-height: 27px;
+    margin-bottom: 20px;
+    padding-right: 20px;
+}
+
+.left .text .scroll {
+    height: 150px;
+    margin-bottom: 10px;
+}
+
+.gal {
+    margin-bottom: 30px;
+}
+
+.gal li {
+    float: left;
+    margin-right: 15px;
+
+}
+
+.gal li img {
+    display: block;
+    border: 5px solid rgba(255, 255, 255, 0.3)
+}
+
+.jspTrack {
+    background: #8f5b24;
+}
+
+.bron.big {
+    background: url("../images/bron_big_bg.png") no-repeat top;
+    width: 311px;
+    height: 41px;
+    font-size: 25px;
+    padding-top: 15px;
+    margin: 0 auto;
+
+}
+
+.bron.big:hover {
+    background: url("../images/bron_big_bg.png") no-repeat bottom;
+
+}
+
+.tac {
+    text-align: center;
+}
+
+.top_abs.tac {
+    top: 10px;
+}
+
+h2 em {
+    font-style: normal;
+    display: block;
+    font-size: 18px;
+    color: #6f5446;
+    margin-bottom: 5px;
+}
+
+.form-top .select {
+    top: 0;
+    left: 0;
+    width: 165px;
+
+}
+
+.form-top {
+    position: relative;
+    padding: 10px 10px 20px;
+}
+
+.form-top .select.big {
+    width: 385px;
+    margin-bottom: 70px;
+}
+
+.form-top .select.big {
+    z-index: 1000;
+}
+
+.form-top .select.big label {
+    font-size: 18px;
+    display: block;
+    padding: 10px 20px 20px;
+    margin-bottom: 40px;
+}
+
+.dop-parameters {
+    position: relative;
+    padding-left: 40px;
+    padding-top: 8px;
+}
+
+.dop-parameters span {
+    border-bottom: 1px dotted #fff;
+    font-size: 24px;
+    font-family: "helios_light", sans-serif;
+    cursor: pointer;
+}
+
+.dop-parameters span:hover {
+    border-bottom: 0;
+}
+
+.plashka-dop {
+    background: url("../images/plashka-bg-tree.png") no-repeat;
+    width: 287px;
+    height: 354px;
+    position: absolute;
+    right: -400px;
+    top: 50%;
+    margin-top: -198px;
+    z-index: 1000;
+    padding: 55px 60px 0 70px;
+    display: none;
+}
+
+.plashka-dop .name {
+    font-size: 34px;
+    text-shadow: 1px 1px #000;
+    position: relative;
+    margin-bottom: 15px;
+    font-family: "helios_light", sans-serif;
+}
+
+.plashka-dop .close {
+    cursor: pointer;
+    position: absolute;
+    background: url("../images/ico-close.jpg") no-repeat;
+    width: 19px;
+    height: 19px;
+    right: 55px;
+    top: 50px;
+}
+
+.plashka-dop .form-item {
+    background: url("../images/divider-dop.jpg") no-repeat 6px bottom;
+    padding-bottom: 22px;
+    overflow: hidden;
+    margin-bottom: 22px;
+}
+
+.plashka-dop input {
+    position: absolute;
+    left: -700px;
+}
+
+.plashka-dop .item {
+    float: left;
+    margin-right: 40px;
+
+}
+
+.plashka-dop label {
+    display: block;
+    background: url("../images/chk-bg.png") no-repeat left top;
+    font-size: 20px;
+    color: #fff;
+    font-family: "helios_light", sans-serif;
+    text-shadow: 1px 1px #000;
+    padding-left: 30px;
+    cursor: pointer;
+}
+
+.plashka-dop label.active {
+    background: url("../images/chk-bg.png") no-repeat left bottom;
+
+}
+
+.plashka-dop .item.last {
+    margin-right: 0;
+}
+
+.plashka-dop .form-item.last {
+    padding: 0;
+    background: none;
+}
+
+.dark-side {
+    background: url("../images/dark-side-bg.png");
+    width: 315px;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    line-height: 24px;
+    text-align: left;
+    padding: 25px 20px;
+    height: 100%;
+    border-left: 5px solid #331b09;
+
+}
+
+.dark-side p {
+    margin-bottom: 30px;
+
+}
+
+.gal li.last {
+    margin-right: 0;
+}
+
+.dark-side h3 {
+    font-family: 'helios_light', sans-serif;
+    font-size: 25px;
+    margin-bottom: 15px;
+
+}
+
+.dark-side h4 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    font-family: 'helios_light', sans-serif;
+}
+
+#datepickers .bron {
+    margin: 0 auto;
+}
+
+.ui-widget-header {
+    background: none;
+    border: 0;
+}
+
+.ui-widget-content {
+    background: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+#datepicker {
+    color: #fff;
+
+}
+
+.ui-datepicker th {
+    font-size: 14px;
+    font-family: 'helios_light', sans-serif;
+    color: #85695d;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+
+}
+
+.ui-datepicker td {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+
+}
+#datepicker table{
+    border-spacing: 0;
+    width: 252px;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default {
+    background: none;
+
+}
+
+.ui-datepicker-month, .ui-datepicker-year {
+    font-size: 20px;
+    font-family: 'helios_light', sans-serif;
+    text-shadow: 1px 1px #000;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    border: 0;
+    color: #ffd6bf;
+    font-weight: normal;
+    font-family: 'helios_thin', sans-serif;
+    font-size: 22px;
+    width: 36px;
+    height: 36px;
+    vertical-align: middle;
+    text-align: center;
+    padding: 0;
+    margin: 0 !important;
+    display: block;
+
+}
+
+#datepicker {
+    margin-left: -20px;
+}
+
+.ui-datepicker-calendar td {
+    padding: 0;
+    margin: 0;
+}
+
+

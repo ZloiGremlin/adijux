@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+
+{% block title %}Номера{% endblock %}
+
+{% block left %}
+
+    <div id="infonomer" class="left lfl">
+        <div class="top_abs">
+            <a class="all_numbers lfl" href="{% url rooms %}">все номера</a>
+
+
+            <div class="select rfl">
+                <em>Выбрать другой номер:</em>
+                <span>{{ room.name }}</span>
+                <ul>
+                    {% for room in rooms %}
+                        <li><a href="{{ room.get_absolute_url }}">{{ room.name }}</a></li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+            <a class="logotip" href="/"><img src="{{ STATIC_URL }}images/small_logo.png" width="217" height="90" alt=""></a>
+
+
+        </div>
+        <div class="text">
+            <h1>{{ room.name }}</h1>
+
+            <h2>Описание номера</h2>
+
+            <div class="scroll">
+                <div class="inner">
+                    {{ room.text|linebreaks }}
+
+                </div>
+            </div>
+        {% if room.images.all.count %}
+
+
+            <h3>
+                Фото номера
+            </h3>
+
+            <div class="gal" id="photonum">
+                <ul>
+                    {% for image in room.images.all %}
+                        <li><a href="{{ image.image.url }}">{% thumbnail image.image "84x54" upscale=true crop='center' as img %}
+                            <img src="{{ img.url }}" alt="{{ item.name }}" width="{{ img.width }}"
+                                 height="{{ img.height }}">
+                        {% endthumbnail %}</a></li>
+                    {% endfor %}
+
+
+                </ul>
+                <div class="clr"></div>
+            </div>
+        {% endif %}
+
+            <a class="bron big" href="#">Забронировать номер</a>
+
+
+
+
+        </div>
+
+
+    </div>
+
+
+{% endblock %}
+
+{% block superclass %}number{% endblock %}
+
+
+
+{% block content %}
+    <div id="rightnomer" style="background:url({{ room.get_image.url }}) no-repeat center; background-size: auto 100%;" class="right rfl">
+
+
+    </div>
+    <style type="text/css">
+    #uzor {
+        min-height: 840px;
+    }
+    </style>
+{% endblock %}

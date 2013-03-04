@@ -20,7 +20,12 @@ class Room(TranslatableModel):
 
     translations = TranslatedFields(
         name = models.CharField(verbose_name=u'Название номера', max_length=255),
+        text = models.TextField(verbose_name=u'Текст', blank=True, null=True),
     )
+
+    @permalink
+    def get_absolute_url(self):
+        return 'room', (self.id,), {}
 
     def __unicode__(self):
         return self.lazy_translation_getter('name', 'Id: %s' % self.pk)
