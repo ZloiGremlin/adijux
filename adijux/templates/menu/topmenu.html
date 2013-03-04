@@ -16,13 +16,15 @@
                     {% endfor %}
                 </ul>
             {% endif %}
-            <ul>
+
             {% if item.url == 'rooms' %}
+                <ul>
                 {% for room in subroom %}
                     <li><a href="{{ room.get_absolute_url }}">{{ room.name }}</a></li>
                 {% endfor %}
+                </ul>
             {% endif %}
-            </ul>
+
         </li>
     {% endfor %}
 </ul>
