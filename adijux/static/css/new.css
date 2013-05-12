@@ -21,7 +21,7 @@
     width: 50%;
     border-right: 5px solid rgba(50, 26, 9, 0.9);
     position: relative;
-    z-index: 110;
+    z-index: 0;
 
 }
 
@@ -113,7 +113,7 @@
 .left .text h2, .left .text h3 {
     background: url("../images/h_bg.png") repeat-y right;
     padding: 10px 10px 10px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 
 }
 
@@ -271,9 +271,9 @@ h2 em {
 
 .plashka-dop .form-item {
     background: url("../images/divider-dop.jpg") no-repeat 6px bottom;
-    padding-bottom: 22px;
+    padding-bottom: 15px;
     overflow: hidden;
-    margin-bottom: 22px;
+    margin-bottom: 15px;
 }
 
 .plashka-dop input {
@@ -348,7 +348,10 @@ h2 em {
 }
 
 #datepickers .bron {
-    margin: 0 auto;
+   position: absolute;
+   left:50%;
+   margin-left: -95px;
+   top: 320px;
 }
 
 .ui-widget-header {
@@ -363,15 +366,28 @@ h2 em {
     margin: 0;
 }
 
+#datepickers{
+    position: relative;
+    height: 300px;
+
+}
+
 #datepicker {
     color: #fff;
+    width: 300px;
+    margin-bottom: 30px;
 
+}
+
+#datepicker2{
+    margin-bottom: 30px;
+    width: 270px;
 }
 
 .ui-datepicker th {
     font-size: 14px;
     font-family: 'helios_light', sans-serif;
-    color: #85695d;
+    color: #fff;
     width: 36px;
     height: 36px;
     padding: 0;
@@ -379,12 +395,12 @@ h2 em {
 }
 
 .ui-datepicker td {
-    width: 36px;
-    height: 36px;
+    width: 35px;
+    height: 35px;
     padding: 0;
 
 }
-#datepicker table{
+#datepicker table, #datepicker2 table{
     border-spacing: 0;
     width: 252px;
 }
@@ -406,23 +422,124 @@ h2 em {
     font-weight: normal;
     font-family: 'helios_thin', sans-serif;
     font-size: 22px;
-    width: 36px;
-    height: 36px;
+    width: 35px;
+    height: 27px;
     vertical-align: middle;
     text-align: center;
     padding: 0;
     margin: 0 !important;
     display: block;
+    padding-top: 8px;
+    border: 1px solid #6b3b16;
+    border-top: 0;
+    border-left:0;
 
 }
 
-#datepicker {
-    margin-left: -20px;
+
+
+.ui-datepicker .ui-datepicker-header{
+    padding: 0;
+    width: 252px;
+}
+.ui-datepicker .ui-datepicker-title {
+    padding: 0;
+    margin: 0;
+    width: 252px;
 }
 
 .ui-datepicker-calendar td {
     padding: 0;
     margin: 0;
+    border:  1px solid rgba(41, 15, 0, 0.2 );
+
+}
+
+.ui-datepicker-calendar th{
+    border-bottom: 1px solid rgba(94, 47, 14, 0.8);
+}
+
+.ui-state-default:hover{
+    color: #fff;
 }
 
 
+.ui-state-default.ui-state-active{
+    background: url("../images/active-date-bg.png") no-repeat;
+}
+
+
+.ui-datepicker-unselectable.ui-state-disabled {
+    background: url("../images/date-disabled.png") no-repeat;
+}
+
+.ui-datepicker .ui-datepicker-prev{
+    display: block;
+    background: url("../images/date-arr.png") no-repeat left top;
+    height: 16px;
+    width: 15px;
+    border: 0;
+    cursor: pointer;
+    top:10px;
+    left: 20px;
+}
+
+.ui-datepicker .ui-datepicker-prev:hover{
+    background-position: left bottom;
+    border: 0;
+}
+
+.ui-datepicker .ui-datepicker-next{
+    display: block;
+    background: url("../images/date-arr.png") no-repeat right top;
+    height: 16px;
+    width: 15px;
+    border: 0;
+    cursor: pointer;
+    top:10px;
+    right: 10px;
+}
+
+.ui-datepicker .ui-datepicker-next:hover{
+    background-position: right bottom;
+    border: 0;
+}
+
+.center.number.booking .left {
+    height: auto;
+    padding-bottom: 30px;
+}
+
+#form_book {
+    background: url("../images/wood_texture_bg.jpg");
+    width: 350px;
+    height: 250px;
+    padding: 25px;
+    color: #fff;
+}
+
+#form_book h3 {
+    font-family: "helios_light", sans-serif;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+#form_book .form-item {
+    overflow: auto;
+    margin-bottom: 20px;
+}
+
+#form_book label {
+    float: left;
+    display: block;
+    width: 130px;
+    padding-top: 4px;
+}
+
+#form_book input {
+    float: left;
+    height: 25px;
+    font-size: 18px;
+    display: block;
+    width: 210px;
+}

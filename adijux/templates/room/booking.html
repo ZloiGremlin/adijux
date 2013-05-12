@@ -1,0 +1,229 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+
+{% block title %}Забронировать номер{% endblock %}
+
+{% block left %}
+
+    <form id="bookingform" method="POST" action="{% url booking %}?room={{ room.id }}">
+    {% csrf_token %}
+    <div class="left lfl" style="border: 0">
+        <div class="top_abs tac">
+            {{ form.errors }}
+            <a href="/"><img src="{{ STATIC_URL }}images/small_logo.png" width="217" height="90" alt=""></a>
+
+
+        </div>
+        <div class="text bronirovanie">
+            <h1>Бронирование номера</h1>
+
+            <h2>
+                <em>Шаг 1.</em>Выберите тип номера и количество человек</h2>
+
+            <div class="form-top">
+
+
+                <div class="select big lfl">
+                    <em>Тип номера:</em>
+                {% if room %}
+                    <span>{{ room.name }}</span>
+                    {% else %}
+                    <span>Не выбрано</span>
+                {% endif %}
+
+                    <ul>
+                        {% for room in rooms %}
+                            {% if room.id != request.GET.room %}
+                                <li><a href="{% url booking %}?room={{ room.id }}">{{ room.name }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+
+                    <label>описание номера появится справа</label>
+
+                </div>
+                {% if request.GET.room %}
+
+
+                <div class="select lfl" id="select_people" rel="id_people">
+                    <em>Количество человек:</em>
+                    <span>2 человека</span>
+                    <ul>
+                        <li><a href="#">1 человек</a></li>
+                        <li><a href="#">2 человека</a></li>
+                        <li><a href="#">3 человека</a></li>
+                        <li><a href="#">4 человека</a></li>
+                    </ul>
+
+                </div>
+                <div class="clr"></div>
+
+                <div class="select lfl" rel="id_qty">
+                    <em>Количество номеров:</em>
+                    <span>1 номер</span>
+                    <ul>
+                        <li><a href="#">1 номер</a></li>
+                        <li><a href="#">2 номера</a></li>
+                        <li><a href="#">3 номера</a></li>
+                        <li><a href="#">4 номера</a></li>
+                    </ul>
+
+                </div>
+
+                <div class="dop-parameters lfl">
+            <span>Дополнительные параметры
+            </span>
+                    <div class="plashka-dop">
+                        <div class="name">Кровати: </div>
+                        <div class="close"></div>
+                        <div class="form-item" rel="id_bed">
+                            <div class="item">
+                                <label for="chk1"><input value="div" id="chk1" name="beds" type="radio">раздельные</label>
+                            </div>
+                            <div class="item last">
+                                <label for="chk2"><input value="two" id="chk2" name="beds" type="radio">двуспальные</label>
+                            </div>
+                        </div>
+
+                        <div class="form-item">
+                            <div class="item">
+                                <label for="id_place">{{ form.place }}Дополнительное место</label>
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="name">Вид из окна:</div>
+
+
+                        <div class="form-item" rel="id_window">
+                            <div class="item">
+                                <label for="chk4"><input id="chk4" name="windows" value="tower" type="radio">башня</label>
+                            </div>
+                            <div class="item">
+                                <label for="chk5"><input id="chk5" name="windows" value="rock" type="radio">холмы</label>
+                            </div>
+                        </div>
+
+                        <div class="form-item last">
+                            <div class="item">
+                                <label for="id_cart">{{ form.cart }}Карта постоянного клиента</label>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="clr"></div>
+                    {% endif %}
+            </div>
+
+            {% if request.GET.room %}
+            <h2>
+                <em>Шаг 2.</em>Выберите дату приезда и отъезда</h2>
+
+            <div id="datepickers">
+
+
+                <div id="datepicker" class="lfl"></div>
+                <div id="datepicker2" class="lfl"></div>
+                <div class="clr"></div>
+
+
+                <a class="bron fancy" href="#form_book">Забронировать номер</a>
+
+            </div>
+            <div class="clr"></div>
+
+
+                <div id="form_book" style="display: none">
+                    <h3>Бронирование номера</h3>
+                <div class="form-item">
+                    <label for="#">Ваше имя</label>
+                    <input type="text" rel="#id_name">
+                </div>
+                    <div class="form-item">
+                        <label for="#">Телефон</label>
+                        <input type="text" rel="#id_phone">
+                    </div>
+                    <div class="form-item">
+                        <label for="#">E-mail</label>
+                        <input type="text" rel="#id_email">
+                    </div>
+                    <a class="bron" onclick="sendBook(); return false;" href="#">Забронировать номер</a>
+                </div>
+
+                {% endif %}
+        </div>
+
+
+    </div>
+
+    <div style="display: none">
+        {{ form.room }}
+        {{ form.name }}
+        {{ form.phone }}
+        {{ form.email }}
+        {{ form.bed }}
+        {{ form.window }}
+        {{ form.date }}
+        {{ form.people }}
+        {{ form.qty }}
+    </div>
+
+    </form>
+
+{% endblock %}
+
+{% block superclass %}number booking{% endblock %}
+
+{% block content %}
+
+
+
+
+
+    <div id="rightnomer" style="background:url({{ room.get_image.url }}) no-repeat center; background-size: auto 100%;" class="right rfl">
+        {% if request.GET.room %}
+        <div class="dark-side">
+            <h4>
+                {{ room.name }}
+            </h4>
+            {{ room.text|linebreaks }}
+
+            <h3>Фото номера</h3>
+
+            <div class="gal" id="photonum">
+                <ul>
+                    {% for image in room.images.all %}
+                        <li><a href="{{ image.image.url }}">{% thumbnail image.image "84x54" upscale=true crop='center' as img %}
+                            <img src="{{ img.url }}" alt="{{ item.name }}" width="{{ img.width }}"
+                                 height="{{ img.height }}">
+                        {% endthumbnail %}</a></li>
+                    {% endfor %}
+                </ul>
+                <div class="clr"></div>
+            </div>
+
+        </div>
+        {% endif %}
+
+    </div>
+
+
+    <style type="text/css">
+    #uzor {
+        min-height: 840px;
+    }
+
+    .footer {
+       display: none;
+    }
+    </style>
+    <script type="text/javascript">
+        var disabledDays = [{% for date in room.get_dates %}"{{ date|date:"j-n-Y" }}"{% if not forloop.last %},{% endif %}{% endfor %}];
+    </script>
+
+{% endblock %}

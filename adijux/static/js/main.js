@@ -1,4 +1,18 @@
 $(function () {
+
+    $('.fancy').fancybox({
+        padding:0,
+        margin:0
+    });
+
+    $('.select:not(".big") a').click(function(){
+        $('#'+$(this).parents('.select').attr('rel')).val($(this).text());
+        $(this).parents('.select').find('ul').slideToggle(200);
+        $(this).parents('.select').find('span').text($(this).text());
+        return false;
+
+    });
+
     setInterval(function () {
         $('.loading').animate({opacity:0.3}, 500, function () {
             $('.loading').animate({opacity:0.8}, 500);
@@ -26,6 +40,80 @@ $(function () {
     $('#photonum a').click(function(){
         $('#rightnomer').css('background-image', 'url('+$(this).attr('href')+')');
         return false;
+    });
+
+
+    $('.dop-parameters span').click(function () {
+        $(this).parent().find('.plashka-dop').fadeIn(200);
+
+    });
+
+    $('.plashka-dop .close').click(function () {
+        $(this).parent().fadeOut(200);
+
+
+    });
+
+    $('.item label input').change(function () {
+        $('*[name=' + $(this).attr('name') + ']').each(function(){$(this).parent().removeClass('active');});
+        $(this).parent().toggleClass('active');
+        $('#'+$(this).parents('.form-item').attr('rel')).val($(this).val());
+    });
+
+    $('#datepicker').datepicker({
+        numberOfMonths:1,
+        minDate:0,
+        onSelect: function(d,t) {
+            var d1 = new Date(parseInt(d.split('.')[2]),parseInt(d.split('.')[1])-1,parseInt(d.split('.')[0]));
+            var d2 = $("#datepicker2").datepicker("getDate");
+            if (d2 < d1) {
+                $("#datepicker2" ).datepicker("setDate", d);
+                d2 = d1;
+            }
+            if (d2 > d1) {
+               while (d2 > d1) {
+                   d2.setDate(d2.getDate() - 1);
+                   var m = d2.getMonth(), day = d2.getDate(), y = d2.getFullYear();
+                   if($.inArray(day + '-' + (m+1) + '-' + y, disabledDays) != -1) {
+                       $("#datepicker2" ).datepicker("setDate", d);
+                       d2 = d1;
+                   }
+
+               }
+            }
+            d1 = new Date(parseInt(d.split('.')[2]),parseInt(d.split('.')[1])-1,parseInt(d.split('.')[0]));
+            d2 = $("#datepicker2").datepicker("getDate");
+            $('#id_date').val(d1.getDate()+ '.' + d1.getMonth() + '.' + d1.getFullYear() + '-' +d2.getDate()+ '.' + d2.getMonth() + '.' + d2.getFullYear());
+        },
+        beforeShowDay: disableDates
+    });
+
+    $('#datepicker2').datepicker({
+        numberOfMonths:1,
+        minDate:0,
+        onSelect: function(d,t) {
+            var d2 = new Date(parseInt(d.split('.')[2]),parseInt(d.split('.')[1])-1,parseInt(d.split('.')[0]));
+            var d1 = $("#datepicker").datepicker("getDate");
+            if (d2 < d1) {
+                $("#datepicker" ).datepicker("setDate", d);
+                d1 = d2;
+            }
+            if (d2 > d1) {
+                while (d2 > d1) {
+                    d2.setDate(d2.getDate() - 1);
+                    var m = d2.getMonth(), day = d2.getDate(), y = d2.getFullYear();
+                    if($.inArray(day + '-' + (m+1) + '-' + y, disabledDays) != -1) {
+                        $("#datepicker" ).datepicker("setDate", d);
+                        d1 = d2;
+                    }
+
+                }
+            }
+            d2 = new Date(parseInt(d.split('.')[2]),parseInt(d.split('.')[1])-1,parseInt(d.split('.')[0]));
+            d1 = $("#datepicker").datepicker("getDate");
+            $('#id_date').val(d1.getDate()+ '.' + d1.getMonth() + '.' + d1.getFullYear() + '-' +d2.getDate()+ '.' + d2.getMonth() + '.' + d2.getFullYear());
+        },
+        beforeShowDay: disableDates
     });
 
 
@@ -127,3 +215,27 @@ $(function () {
     $('#arr-prev').click(prevSlide);
     $('#arr-next').click(nextSlide);
 });
+
+
+
+
+/* utility functions */
+function disableDates(date) {
+    var m = date.getMonth(), d = date.getDate(), y = date.getFullYear();
+    //console.log('Checking (raw): ' + m + '-' + d + '-' + y);
+    for (i = 0; i < disabledDays.length; i++) {
+        if($.inArray(d + '-' + (m+1) + '-' + y, disabledDays) != -1) {
+            //console.log('bad:  ' + (m+1) + '-' + d + '-' + y + ' / ' + disabledDays[i]);
+            return [false];
+        }
+    }
+    //console.log('good:  ' + (m+1) + '-' + d + '-' + y);
+    return [true];
+}
+
+function sendBook(){
+    $('#form_book input').each(function(){
+        $($(this).attr('rel')).val($(this).val());
+    });
+    $('#bookingform').submit();
+}

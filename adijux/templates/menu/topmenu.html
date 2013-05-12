@@ -1,6 +1,6 @@
 <ul class="menu_top lfl">
     {% for item in topmenu %}
-        <li class="{% if object == item.page or menuname == item.name %}active{% endif %} {% if 'Свадьба' in item.name %}oth{% endif %}  {% if forloop.last %}last{% endif %}" >
+        <li class="{% if object and object == item.page or menuname == item.name %}active{% endif %} {% if 'Свадьба' in item.name %}oth{% endif %}  {% if forloop.last %}last{% endif %}" >
             <a href="{% if item.page %}{% if item.page.front %}/{% else %}{{ item.page.get_absolute_url }}{% endif %}{% else %}/{{ item.url }}{% endif %} ">
                 {{ item.name|safe }}
             </a>
