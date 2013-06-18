@@ -548,6 +548,10 @@ h1 span {
     color: #f0b310;
 }
 
+.top .inner strong {
+    color: #f0b310;
+}
+
 .right.content img {
     padding: 10px;
     display: block;

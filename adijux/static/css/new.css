@@ -512,8 +512,8 @@ h2 em {
 
 #form_book {
     background: url("../images/wood_texture_bg.jpg");
-    width: 350px;
-    height: 250px;
+    width: 400px;
+    height: 350px;
     padding: 25px;
     color: #fff;
 }
@@ -534,6 +534,12 @@ h2 em {
     display: block;
     width: 130px;
     padding-top: 4px;
+
+}
+
+#form_book textarea {
+    height: 55px;
+    width: 210px;
 }
 
 #form_book input {

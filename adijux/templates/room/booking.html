@@ -152,6 +152,10 @@
                         <label for="#">E-mail</label>
                         <input type="text" rel="#id_email">
                     </div>
+                    <div class="form-item" style="overflow: hidden">
+                        <label for="#">Особые пожелания</label>
+                        <textarea rel="#id_comment"></textarea>
+                    </div>
                     <a class="bron" onclick="sendBook(); return false;" href="#">Забронировать номер</a>
                 </div>
 
@@ -164,6 +168,7 @@
     <div style="display: none">
         {{ form.room }}
         {{ form.name }}
+        {{ form.comment }}
         {{ form.phone }}
         {{ form.email }}
         {{ form.bed }}

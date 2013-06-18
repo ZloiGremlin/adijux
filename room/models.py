@@ -87,6 +87,7 @@ class RoomBooking(models.Model):
     name = models.CharField(verbose_name=u'Имя', max_length=255, blank=True, null=True)
     phone = models.CharField(verbose_name=u'Телефон', max_length=255, blank=True, null=True)
     email = models.CharField(verbose_name=u'E-mail', max_length=255, blank=True, null=True)
+    comment = models.TextField(verbose_name=u'Особые пожелания', max_length=255, blank=True, null=True)
     room = models.ForeignKey(Room, related_name='booking', verbose_name=u'Тип номера')
     people = models.CharField(verbose_name=u'Количество человек', max_length=255, blank=True, null=True)
     qty = models.CharField(verbose_name=u'Количество номеров', max_length=255, blank=True, null=True)

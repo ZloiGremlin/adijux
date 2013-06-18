@@ -244,8 +244,28 @@ function disableDates(date) {
 }
 
 function sendBook(){
-    $('#form_book input').each(function(){
+    $('#form_book input, #form_book textarea').each(function(){
+
         $($(this).attr('rel')).val($(this).val());
     });
     $('#bookingform').submit();
 }
+
+
+var map;
+    $(document).ready(function(){
+      map = new GMaps({
+        div: '#map',
+        zoom: 16,
+        lat: 44.045895,
+        lng: 41.766216
+      });
+      map.addMarker({
+        lat: 44.045895,
+        lng: 41.766216,
+        title: 'Адиюх-Пэлас',
+        infoWindow: {
+        content: '<p>369400, Россия</p><p>Карачаево-Черкесская Республика</p> <p>А. Хабез,ул. Умара Хабекова, 124а</p>'
+        }
+      });
+    });
