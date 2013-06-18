@@ -15,15 +15,29 @@ def get_file_path(instance, filename):
     filename = "%s.%s" % (uuid.uuid4(), ext)
     return os.path.join(getattr(settings, 'PRODUCT_IMAGE_UPLOAD_TO', 'catalog/'), filename)
 
+
+class Album(models.Model):
+    class Meta(object):
+        verbose_name = u'Альбом'
+        verbose_name_plural = u'Альбомы'
+
+    name = models.CharField(verbose_name=u'Название альбома', max_length=255)
+    gallery = models.BooleanField(verbose_name=u'Отображать альбом в разделе фотогалерея', default=False)
+
+    def __unicode__(self):
+        return self.name
+
+
 class ImageElement(TranslatableModel):
     class Meta(object):
-        verbose_name=u'Изображение'
-        verbose_name_plural=u'Изображения'
+        verbose_name = u'Изображение'
+        verbose_name_plural = u'Изображения'
 
     translations = TranslatedFields(
-        name = models.CharField(verbose_name=u'Название изображения', max_length=255),
+        name=models.CharField(verbose_name=u'Название изображения', max_length=255),
     )
 
+    album = models.ForeignKey(Album, verbose_name=u'Альбом', related_name='images')
     image = ImageField(upload_to=get_file_path, verbose_name=u'Изображение')
 
     def __unicode__(self):

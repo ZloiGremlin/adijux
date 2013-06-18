@@ -10,12 +10,15 @@
                 <div class="head">
                     <div class="turn">Свернуть описание</div>
                     <h1>{{ object.name|safe }}</h1>
-                    <ul class="cont_menu ofl">
-                        {% for item in menu %}
-                            <li {% if forloop.first %}class="active"{% endif %}><a
-                                    href="{{ item.url }}">{{ item.name }}</a></li>
-                        {% endfor %}
-                    </ul>
+                {% if object.submenu %}
+
+                {% endif %} {{ object.submenu|safe }}
+{#                    <ul class="cont_menu ofl">#}
+{#                        {% for item in menu %}#}
+{#                            <li {% if forloop.first %}class="active"{% endif %}><a#}
+{#                                    href="{{ item.url }}">{{ item.name }}</a></li>#}
+{#                        {% endfor %}#}
+{#                    </ul>#}
                 </div>
                 <div class="scroll">
                     <div class="inner">
@@ -39,7 +42,7 @@
 
     <div class="thumbnails" style="display: none;">
         <ul>
-            {% for item in gallery %}
+            {% for item in object.album.images.all %}
                 <li {% if forloop.first %}class="active"{% endif %} rel="{{ forloop.counter0 }}">
                     <a href="#">
                         <div class="name">{{ item.name|safe }}</div>
@@ -58,7 +61,7 @@
 
 
     <div id="bgs" style="display:none;">
-        {% for item in gallery %}
+        {% for item in object.album.images.all %}
             <img src="{{ item.image.url }}" alt="">
         {% endfor %}
     </div>

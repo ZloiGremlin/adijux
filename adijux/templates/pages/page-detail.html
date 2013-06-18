@@ -1,23 +1,123 @@
 {% extends "base.html" %}
-
+{% load thumbnail %}
 {% block description %}{{ object.meta_description }}{% endblock %}
 {% block keywords %}{{ object.meta_keywords }}{% endblock %}
 
-{% block content %}
-    <div class="right content">
-        <h1>
-            {{ object.name }}
-        </h1>
 
+    {% block content %}
+        {% if object.album %}
+        <div class="right rfl">
+            <div class="top">
 
-        <div class="scroll">
-            <div class="inner">
-                {{ object.text|safe }}
+                <div class="bottom">
+                    <div class="head">
+                        <div class="turn">Свернуть описание</div>
+                        <h1>{{ object.name|safe }}</h1>
+                        <ul class="cont_menu ofl">
+                            {% for item in menu %}
+                                <li {% if forloop.first %}class="active"{% endif %}><a
+                                        href="{{ item.url }}">{{ item.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="scroll">
+                        <div class="inner">
+                            {{ object.text|safe }}
+                        </div>
+                    </div>
+                    <a class="bron" href="{% url booking %}">Забронировать номер</a>
 
+                </div>
 
             </div>
+
+
         </div>
+            {% else %}
+             <div class="right content">
+            <h1>
+                {{ object.name }}
+            </h1>
 
 
-    </div>
-{% endblock %}
+            <div class="scroll">
+                <div class="inner">
+                    {{ object.text|safe }}
+
+
+                </div>
+            </div>
+
+
+        </div>
+        {% endif %}
+    {% endblock %}
+
+
+    {% block gallery %}
+        {% if object.album %}
+        <div class="photo"><img src="" alt=""></div>
+
+        <div class="thumbnails" style="display: none;">
+            <ul>
+                {% for item in object.album.images.all %}
+                    <li {% if forloop.first %}class="active"{% endif %} rel="{{ forloop.counter0 }}">
+                        <a href="#">
+                            <div class="name">{{ item.name|safe }}</div>
+                            <div class="img">
+                                {% thumbnail item.image "84x54" upscale=true crop='center' as img %}
+                                    <img src="{{ img.url }}" alt="{{ item.name }}" width="{{ img.width }}"
+                                         height="{{ img.height }}">
+                                {% endthumbnail %}
+                            </div>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="squares" style="display: none;"></div>
+
+
+        <div id="bgs" style="display:none;">
+            {% for item in object.album.images.all %}
+                <img src="{{ item.image.url }}" alt="">
+            {% endfor %}
+        </div>
+        {% else %}
+
+        {{ block.super }}
+        {% endif %}
+
+    {% endblock %}
+
+    {% block left %}
+        {% if object.album %}
+
+        <div class="left lfl">
+            <div class="logo" style="top:-400px;">
+                <a href="/"><img src="{{ STATIC_URL }}images/logo.png" width="278" height="118" alt=""></a>
+            </div>
+
+            <div class="preloader">
+                <img src="{{ STATIC_URL }}images/logo_loader.png" width="274" height="112" alt="">
+
+                <div class="loading"></div>
+            </div>
+        </div>
+        {% else %}
+
+        {{ block.super }}
+        {% endif %}
+    {% endblock %}
+
+    {% block arrows %}
+{% if object.album %}
+        <div class="gallery_nav lfl">
+            <a href="#" id="arr-prev"><img src="{{ STATIC_URL }}images/prev_arr.png" width="117" height="28" alt=""></a>
+            <a href="#" id="arr-next"><img src="{{ STATIC_URL }}images/next_arr.png" width="110" height="28" alt=""></a>
+        </div>
+        {% else %}
+
+        {{ block.super }}
+        {% endif %}
+    {% endblock %}

@@ -5,6 +5,14 @@ $(function () {
         margin:0
     });
 
+    $('.cont_menu li a').click(function(){
+        $('.cont_menu li').removeClass('active');
+        $(this).parent().addClass('active');
+        $('.sw').hide(0);
+        $($(this).attr('href')).show(0);
+        return false;
+    });
+
     $('.select:not(".big") a').click(function(){
         $('#'+$(this).parents('.select').attr('rel')).val($(this).text());
         $(this).parents('.select').find('ul').slideToggle(200);
@@ -135,6 +143,8 @@ function setWindowSize() {
     $('#rightnomer, #infonomer').css('height', $('#uzor').height()-73);
 
     $('.right.content .scroll').height(w_height - 75 - 73 - 60 - 75 - $('.right.content h1').height());
+
+    if ($('#rightnomer').height() < $('.booking').height()) $('#rightnomer').height($('.booking').height());
 }
 
 function selectSlide(index) {

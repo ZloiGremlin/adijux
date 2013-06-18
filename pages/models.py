@@ -1,5 +1,6 @@
 # vim:fileencoding=utf-8
 from django.db import models
+from gallery.models import Album
 from hvad.models import TranslatableModel, TranslatedFields
 from django.db.models import permalink
 
@@ -16,10 +17,12 @@ class Page(TranslatableModel):
         title = models.TextField(verbose_name=u'Тайтл', null=True, blank=True),
         meta_keywords = models.TextField(verbose_name=u'Keywords', null=True, blank=True),
         meta_description = models.TextField(verbose_name=u'Description', null=True, blank=True),
+        submenu = models.TextField(verbose_name=u'Внутреннее меню', null=True, blank=True),
     )
 
     url = models.CharField(max_length=255, verbose_name=u'Адрес(URL)', unique=True)
     front = models.BooleanField(default=False, verbose_name=u'Главная страница')
+    album = models.ForeignKey(Album, verbose_name=u'Альбом', null=True, blank=True)
 
 
     def __unicode__(self):
