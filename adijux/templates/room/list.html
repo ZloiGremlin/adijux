@@ -20,8 +20,8 @@
         {{ blocks.bron|safe }}
 
         <script type="text/javascript">
-            $(function(){
-                $('#uzor').css('min-height', $('.left').height() + 75 + 73 + 67 + 30 )
+            $(function () {
+                $('#uzor').css('min-height', $('.left').height() + 75 + 73 + 67 + 30)
             });
 
         </script>
@@ -36,6 +36,13 @@
     <div class="right content">
         <div class="scroll" style="min-height: 500px;">
             <div class="inner">
+                <p>
+                    В стоимость проживания номера входит: завтрак, пользование бассейном, банями (турецкий хамам,
+                    финская баня, инфракрасная сауна) тренажерным залом до 20:00, Wi-Fi по всей территории, детская
+                    комната и детские площадки до 18:00, поднос багажа, место под навесом на озере, автостоянка –
+                    круглосуточно.
+                </p>
+
                 {% for room in rooms %}
                     <div class="nomer lfl">
                         <a href="{{ room.get_absolute_url }}">
@@ -44,7 +51,8 @@
                             <div class="bot">
                                 <a class="type lfl" href="{{ room.get_absolute_url }}">{{ room.name }}</a>
 
-                                <div class="all_discription rfl"><a href="{{ room.get_absolute_url }}">полное описание</a></div>
+                                <div class="all_discription rfl"><a href="{{ room.get_absolute_url }}">полное
+                                    описание</a></div>
                             </div>
                         </a>
                     </div>
