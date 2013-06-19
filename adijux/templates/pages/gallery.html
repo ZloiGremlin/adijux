@@ -11,7 +11,7 @@
 
                 {% for item in gallery %}
                     <div class="nomer lfl">
-                    {% thumbnail item.get_image.image '600' as img %}
+                    {% thumbnail item.get_image.image '600x300' crop='center' as img %}
                         {% if item.link %}
 
                          <a href="{{ item.link }}">
