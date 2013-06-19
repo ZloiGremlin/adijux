@@ -23,6 +23,10 @@ class Album(models.Model):
 
     name = models.CharField(verbose_name=u'Название альбома', max_length=255)
     gallery = models.BooleanField(verbose_name=u'Отображать альбом в разделе фотогалерея', default=False)
+    link = models.CharField(max_length=255, verbose_name=u'Ссылка на страницу', blank=True, null=True)
+
+    def get_image(self):
+        return self.images.all()[0]
 
     def __unicode__(self):
         return self.name

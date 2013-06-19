@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+{% block title %}Галерея{% endblock %}
+
+{% block content %}
+    <div class="right content">
+        <div class="scroll" style="min-height: 500px;">
+            <div class="inner">
+                <h1>Галерея</h1>
+
+
+                {% for item in gallery %}
+                    <div class="nomer lfl">
+                    {% thumbnail item.get_image.image '600' as img %}
+                        {% if item.link %}
+
+                         <a href="{{ item.link }}">
+
+                            <img src="{{ img.url }}" width="100%" alt="{{ item.name }}">
+
+                            <div class="bot">
+                                <a class="type lfl" href="{{ item.link }}">{{ item.name }}</a>
+
+                                <div class="all_discription rfl"><a href="{{ item.link }}">смотреть фото</a></div>
+                            </div>
+                        </a>
+
+                            {% else %}
+                            <a  href="#" onclick="$(this).parent().find('.glas a:first').click();return false;">
+
+                            <img src="{{ img.url }}" width="100%" alt="{{ item.name }}">
+
+                            <div class="bot">
+                                <a href="#" onclick="$(this).parents('.nomer').find('.glas a:first').click();return false;" class="type lfl">{{ item.name }}</a>
+
+                                <div class="all_discription rfl"><a href="#" onclick="$(this).parents('.nomer').find('.glas a:first').click();return false;">смотреть фото</a></div>
+                            </div>
+                        </a>
+                        {% endif %}
+                    {% endthumbnail %}
+                    <div style="display: none" class="glas">
+                        {% for photo in item.images.all %}
+                                {% thumbnail photo.image '1100' upscale=False as img %}
+                                <a class="fancy" title="{{ photo.name }}" rel='gal-{{ item.id }}' href="{{ img.url }}"></a>
+                                {% endthumbnail %}
+                        {% endfor %}
+
+                    </div>
+                    </div>
+                    {% if forloop.counter|divisibleby:2 or forloop.last %}
+                        <div class="clr"></div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
